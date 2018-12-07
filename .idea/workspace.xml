@@ -25,7 +25,7 @@
           <entry key="env" value="5" />
           <entry key="go" value="39" />
           <entry key="html" value="22" />
-          <entry key="json" value="1" />
+          <entry key="json" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -33,7 +33,7 @@
           <entry key="CSS" value="1" />
           <entry key="Go" value="39" />
           <entry key="HTML" value="22" />
-          <entry key="JSON" value="1" />
+          <entry key="JSON" value="2" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
@@ -64,7 +64,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/handlers/account_handler.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
@@ -72,6 +72,15 @@
               <folding>
                 <element signature="e#18#397#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vendor/vendor.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -175,6 +184,7 @@
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/assets/templates/reset_password.html" />
         <option value="$PROJECT_DIR$/handlers/account_handler.go" />
+        <option value="$PROJECT_DIR$/vendor/vendor.json" />
       </list>
     </option>
   </component>
@@ -184,7 +194,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -444,13 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/vendor.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handlers/account_handler.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -458,6 +461,13 @@
           <folding>
             <element signature="e#18#397#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/vendor.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
         </state>
       </provider>
     </entry>
