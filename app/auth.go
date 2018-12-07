@@ -15,7 +15,7 @@ var JwtMiddleware = func(next http.Handler) http.Handler {
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
-		notAuth := []string{"/api/account/new", "/api/account/authenticate",
+		notAuth := []string{"/", "/api/account/new", "/api/account/authenticate",
 		"/account/new", "/account/authenticate", "/forgotpassword", "/resetpassword", "/auth/google", "/auth/google/callback"} //List of endpoints that doesn't require auth
 		requestPath := r.URL.Path //current request path
 

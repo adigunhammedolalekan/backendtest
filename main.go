@@ -18,7 +18,7 @@ import (
 func main() {
 
 	godotenv.Load()
-	db, err := app.CreateDbConnection(os.Getenv("DB_URL"))
+	db, err := app.CreateDbConnection(os.Getenv("DATABASE_URL"))
 	if err != nil {
 		log.Fatal("Failed to connect to DB => ", err)
 	}
@@ -33,11 +33,13 @@ func main() {
 	accountRepo := repo.NewAccountRepository(db)
 	accountHandler := handlers.NewAccountHandler(accountRepo, templ)
 	accountApiHandler := handlers.NewAccountApiHandler(accountRepo)
+	indexHandler := handlers.NewIndexHandler(templ)
 
 	router.Use(app.JwtMiddleware)
 	router.HandleFunc("/api/account/new", accountApiHandler.CreateNewAccount).Methods("POST")
 	router.HandleFunc("/api/account/authenticate", accountApiHandler.AuthenticateAccount).Methods("POST")
 	router.HandleFunc("/api/account/update", accountApiHandler.UpdateAccount).Methods("POST")
+	router.HandleFunc("/", indexHandler.IndexPage).Methods("GET")
 	router.HandleFunc("/account/new", accountHandler.RenderCreateAccountPage).Methods("GET")
 	router.HandleFunc("/account/new", accountHandler.CreateNewAccount).Methods("POST")
 	router.HandleFunc("/account/authenticate", accountHandler.RenderSignInPage).Methods("GET")

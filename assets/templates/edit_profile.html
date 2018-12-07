@@ -42,14 +42,14 @@
 
 </div>
 
-<script src="http://ditu.google.cn/maps/api/js?sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIsWoAhk6olKRn7xumc3G-dfFGkEHpvc8&libraries=places&callback=initAutocomplete"></script>
 <script type="text/javascript">
     function initPlaceAutocomplete() {
 
         var input = document.getElementById("address");
-        var autoComplete = new google.maps.places.Autocomplete(input, []);
+        var autoComplete = new google.maps.places.Autocomplete(input, {types: ['geocode']});
 
-        google.maps.event.addListener(autoComplete, 'place_changed', function () {
+        autoComplete.addListener('place_changed', function () {
             var place = places.getPlace();
             var address = place.formatted_address;
             var latitude = place.geometry.location.A;
@@ -61,7 +61,7 @@
         });
     }
 
-    google.maps.event.addDomListener(window, 'load', initPlaceAutocomplete);
+    initPlaceAutocomplete()
 </script>
 </body>
 </html>
