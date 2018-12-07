@@ -1,0 +1,99 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "Bk+abUb+7L7fAnOzKPo5niOZS9k=",
+			"path": "cloud.google.com/go/compute/metadata",
+			"revision": "fa2eb35540bd3aa374a170dd14d8c5ed18407e66",
+			"revisionTime": "2018-12-04T01:32:12Z"
+		},
+		{
+			"checksumSHA1": "S5uhI0PqtVwGWetaS82w62R8sZA=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "Ypjy0Pa/KoFNC6QM7ViQsbZIgvc=",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "60d456a402782453be397030407e34decaf04d73",
+			"revisionTime": "2018-12-02T17:10:36Z"
+		},
+		{
+			"checksumSHA1": "kJXWK9r2PT3f0mvfFhbtCdQx8tE=",
+			"path": "github.com/gorilla/mux",
+			"revision": "3d80bc801bb034e17cae38591335b3b1110f1c47",
+			"revisionTime": "2018-10-30T15:25:28Z"
+		},
+		{
+			"checksumSHA1": "vbLHU12HMtmkjt1Y+YKUw3JCeD4=",
+			"path": "github.com/jinzhu/gorm",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "mfb/EusMwfajCPq0lwLWM/pvqI4=",
+			"path": "github.com/jinzhu/inflection",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "Upm2HylYMVgYGQhytkkuaEdKuwM=",
+			"path": "github.com/joho/godotenv",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "majIoFgF9jhLTD6PC4y2NuHLQbw=",
+			"path": "github.com/mailjet/mailjet-apiv3-go",
+			"revision": "9a7900801c1e62ecf9182d8b9e419669535cceee",
+			"revisionTime": "2018-02-15T10:26:58Z"
+		},
+		{
+			"checksumSHA1": "QDXi/FJ56MsPm8Rf3hQyfcWqB7U=",
+			"path": "github.com/mailjet/mailjet-apiv3-go/fixtures",
+			"revision": "9a7900801c1e62ecf9182d8b9e419669535cceee",
+			"revisionTime": "2018-02-15T10:26:58Z"
+		},
+		{
+			"checksumSHA1": "vVB51WqscDRBVV/loUEvs4XyF8s=",
+			"path": "github.com/mailjet/mailjet-apiv3-go/resources",
+			"revision": "9a7900801c1e62ecf9182d8b9e419669535cceee",
+			"revisionTime": "2018-02-15T10:26:58Z"
+		},
+		{
+			"checksumSHA1": "aFpql3G+Nw8zkzfqLWQJNZC8pu0=",
+			"path": "golang.org/x/net/context/ctxhttp",
+			"revision": "adae6a3d119ae4890b46832a2e88a95adc62b8e7",
+			"revisionTime": "2018-11-14T21:44:15Z"
+		},
+		{
+			"checksumSHA1": "tKKP00TLcx44TFAGtNlT3OHPTto=",
+			"path": "golang.org/x/oauth2",
+			"revision": "d668ce993890a79bda886613ee587a69dd5da7a6",
+			"revisionTime": "2018-12-02T09:28:16Z"
+		},
+		{
+			"checksumSHA1": "U54VEvWFeJM/BAGO4qD+uibn5Fg=",
+			"path": "golang.org/x/oauth2/google",
+			"revision": "d668ce993890a79bda886613ee587a69dd5da7a6",
+			"revisionTime": "2018-12-02T09:28:16Z"
+		},
+		{
+			"checksumSHA1": "jQv9bi+Zy4Tbi/hKjK94oh/D21M=",
+			"path": "golang.org/x/oauth2/internal",
+			"revision": "d668ce993890a79bda886613ee587a69dd5da7a6",
+			"revisionTime": "2018-12-02T09:28:16Z"
+		},
+		{
+			"checksumSHA1": "xxKkwcwqVWkkv/zZWZ0BxZWfLAI=",
+			"path": "golang.org/x/oauth2/jws",
+			"revision": "d668ce993890a79bda886613ee587a69dd5da7a6",
+			"revisionTime": "2018-12-02T09:28:16Z"
+		},
+		{
+			"checksumSHA1": "KCGquGRMTpBNFp16SF5IKyk9Vws=",
+			"path": "golang.org/x/oauth2/jwt",
+			"revision": "d668ce993890a79bda886613ee587a69dd5da7a6",
+			"revisionTime": "2018-12-02T09:28:16Z"
+		}
+	],
+	"rootPath": "github.com/adigunhammedolalekan/backendTest"
+}
