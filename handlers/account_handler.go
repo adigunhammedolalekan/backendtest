@@ -274,7 +274,7 @@ func (handler *AccountHandler) HandleGoogleAuth(w http.ResponseWriter, r *http.R
 
 
 	var oauthConfig = &oauth2.Config{
-		RedirectURL: "http://localhost:9001/auth/google/callback",
+		RedirectURL: "https://desolate-chamber-59976.herokuapp.com/auth/google/callback",
 		ClientID: os.Getenv("GOOGLE_CLIENT_ID"),
 		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
 		Scopes:       []string{"https://www.googleapis.com/auth/userinfo.profile"},
@@ -335,7 +335,7 @@ func (handler *AccountHandler) fetchUserProfile(code string) ([]byte, error) {
 
 
 	var oauthConfig = &oauth2.Config{
-		RedirectURL: "http://localhost:9001/auth/google/callback",
+		RedirectURL: "https://desolate-chamber-59976.herokuapp.com/auth/google/callback",
 		ClientID: os.Getenv("GOOGLE_CLIENT_ID"),
 		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),
 		Scopes:       []string{"https://www.googleapis.com/auth/userinfo.profile"},
