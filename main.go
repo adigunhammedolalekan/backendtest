@@ -18,7 +18,7 @@ import (
 func main() {
 
 	godotenv.Load()
-	db, err := app.CreateDbConnection(os.Getenv("DATABASE_URL"))
+	db, err := app.CreateDbConnection(os.Getenv("DB_URL"))
 	if err != nil {
 		log.Fatal("Failed to connect to DB => ", err)
 	}
