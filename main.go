@@ -39,6 +39,9 @@ func main() {
 	router.HandleFunc("/api/account/new", accountApiHandler.CreateNewAccount).Methods("POST")
 	router.HandleFunc("/api/account/authenticate", accountApiHandler.AuthenticateAccount).Methods("POST")
 	router.HandleFunc("/api/account/update", accountApiHandler.UpdateAccount).Methods("POST")
+	router.HandleFunc("/api/me/profile", accountApiHandler.FetchCurrentUserProfile).Methods("GET")
+	router.HandleFunc("/api/profile/{id}", accountApiHandler.FetchProfile).Methods("GET")
+
 	router.HandleFunc("/", indexHandler.IndexPage).Methods("GET")
 	router.HandleFunc("/account/new", accountHandler.RenderCreateAccountPage).Methods("GET")
 	router.HandleFunc("/account/new", accountHandler.CreateNewAccount).Methods("POST")
@@ -68,6 +71,7 @@ func main() {
 	}
 }
 
+//Load templates/views
 func loadTemplates() *template.Template {
 
 	var allTemplates []string

@@ -135,7 +135,7 @@ func (repo *AccountRepository) GetProfile(account uint) *models.Profile {
 func (repo *AccountRepository) SendForgotPasswordEmail(account *models.Account) (error) {
 
 	uniqueHash := createUniqueHash(os.Getenv("JWT_SECRET") + account.Email)
-	body := "Click the link below to reset your password http://localhost:9001/resetpassword/" + uniqueHash
+	body := "Click the link below to reset your password https://desolate-chamber-59976.herokuapp.com/resetpassword/" + uniqueHash
 
 	token := &models.PasswordResetToken{
 		AccountId: account.ID, Hash: uniqueHash,
