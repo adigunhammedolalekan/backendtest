@@ -37,7 +37,10 @@ var JwtMiddleware = func(next http.Handler) http.Handler {
 
 		tokenValue := ""
 		cookie, err := r.Cookie("AuthorizationKey") //Grab the token from cookie
-		tokenValue = cookie.Value
+		if cookie != nil {
+			tokenValue = cookie.Value
+		}
+
 		if tokenValue == "" {
 			tokenValue = r.Header.Get("AuthorizationKey") //or grab from header for API requests
 		}
