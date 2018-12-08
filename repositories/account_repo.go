@@ -12,10 +12,13 @@ import (
 	"os"
 )
 
+//AccountRepository handles all database interactions
+//for accounts
 type AccountRepository struct {
 	db *gorm.DB
 }
 
+//returns a new AccountRepository pointer
 func NewAccountRepository(db *gorm.DB) *AccountRepository {
 
 	return &AccountRepository{
@@ -23,6 +26,12 @@ func NewAccountRepository(db *gorm.DB) *AccountRepository {
 	}
 }
 
+//CreateAccount with a unique email
+//It is handled in a transaction because
+//we need to create account and profile at once.
+//Either of the two operation must not fail.
+//If one of the two fail, both will automatically failed.
+//There'll be no account without profile and vice versa
 func (repo *AccountRepository) CreateAccount(account *models.Account) (*models.Account, error) {
 
 	if err := account.Validate(); err != nil {
@@ -55,6 +64,9 @@ func (repo *AccountRepository) CreateAccount(account *models.Account) (*models.A
 	return account, nil
 }
 
+//ValidateLoginCredentials validates an email and password
+//against our database record
+//returns error if it failed.
 func (repo *AccountRepository) ValidateLoginCredentials(email, password string) error {
 
 	account := &models.Account{
@@ -77,10 +89,12 @@ func (repo *AccountRepository) ValidateLoginCredentials(email, password string) 
 	return nil
 }
 
+//UpdateAccount updates existing account
 func (repo *AccountRepository) UpdateAccount(account uint, profile *models.Profile) error {
 	return repo.db.Table("profiles").Update(profile).Error
 }
 
+//GetAccount fetch account with @param email from the database
 func (repo *AccountRepository) GetAccount(email string) *models.Account {
 
 	account := &models.Account{}
@@ -93,6 +107,8 @@ func (repo *AccountRepository) GetAccount(email string) *models.Account {
 	return account
 }
 
+//GetAccountWithToken fetch an account
+//and create a JWT token for that account
 func (repo *AccountRepository) GetAccountWithToken(email string) *models.Account {
 
 	account := repo.GetAccount(email)
@@ -105,6 +121,7 @@ func (repo *AccountRepository) GetAccountWithToken(email string) *models.Account
 	return account
 }
 
+//GetAccountById fetch an account that has id @param id
 func (repo *AccountRepository) GetAccountById(id uint) *models.Account {
 
 	account := &models.Account{}
@@ -118,6 +135,7 @@ func (repo *AccountRepository) GetAccountById(id uint) *models.Account {
 	return account
 }
 
+//GetProfile returns a profile identified by account
 func (repo *AccountRepository) GetProfile(account uint) *models.Profile {
 
 	profile := &models.Profile{}
@@ -126,12 +144,16 @@ func (repo *AccountRepository) GetProfile(account uint) *models.Profile {
 		return nil
 	}
 
+	//give a default fullname
 	if profile.Fullname == "" {
 		profile.Fullname = "Awesome Human!"
 	}
 	return profile
 }
 
+//SendForgotPasswordEmail prepare and send a password reset
+//email. A unique hash is generated for each user.
+//TODO: make unique hash more secure
 func (repo *AccountRepository) SendForgotPasswordEmail(account *models.Account) (error) {
 
 	uniqueHash := createUniqueHash(os.Getenv("JWT_SECRET") + account.Email)
@@ -154,6 +176,7 @@ func (repo *AccountRepository) SendForgotPasswordEmail(account *models.Account) 
 	return SendEmail(mailRequest)
 }
 
+//ResetPassword updates account password
 func (repo *AccountRepository) ResetPassword(hash, newPassword string) (error) {
 
 	token := &models.PasswordResetToken{}
@@ -171,6 +194,10 @@ func (repo *AccountRepository) ResetPassword(hash, newPassword string) (error) {
 	return nil
 }
 
+//AuthenticateGoogleAccount signs user in with google.
+//It creates a new account if an account with supplied
+//googleId is not yet created. Or returns an existing account
+//linked with googleId. DB operation handled in transaction
 func (repo *AccountRepository) AuthenticateGoogleAccount(user *models.GoogleAuthResponse) (*models.Account, error) {
 
 	account := &models.Account{}
@@ -200,6 +227,7 @@ func (repo *AccountRepository) AuthenticateGoogleAccount(user *models.GoogleAuth
 	return repo.GetAccountByAttr("google_id", user.Id), nil
 }
 
+//GetAccountByAttr fetched an account where col == value
 func (repo *AccountRepository) GetAccountByAttr(col string, value interface{}) (*models.Account) {
 
 	account := &models.Account{}
@@ -213,6 +241,7 @@ func (repo *AccountRepository) GetAccountByAttr(col string, value interface{}) (
 	return account
 }
 
+//returns an MD rep of @param key
 func createUniqueHash(key string) string {
 
 	hasher := md5.New()
@@ -220,6 +249,7 @@ func createUniqueHash(key string) string {
 	return hex.EncodeToString([]byte(hasher.Sum(nil)))
 }
 
+//generateJWT generate a JWT token for account with @param id
 func (repo *AccountRepository) generateJWT(id uint) string {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, &models.Token{
@@ -230,6 +260,7 @@ func (repo *AccountRepository) generateJWT(id uint) string {
 	return tokenString
 }
 
+//hashPassword returns a bcrypted password
 func (repo *AccountRepository) hashPassword(password string) string {
 
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
@@ -240,6 +271,8 @@ func (repo *AccountRepository) hashPassword(password string) string {
 	return string(hashedPassword)
 }
 
+//comparePassword compares a bcrypted password
+//and a plain one. returns true if matched or false otherwise
 func (repo *AccountRepository) comparePassword(hashed, plain string) bool {
 
 	err := bcrypt.CompareHashAndPassword([]byte(hashed), []byte(plain))

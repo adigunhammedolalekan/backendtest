@@ -65,7 +65,7 @@ var JwtMiddleware = func(next http.Handler) http.Handler {
 				Error: true, Message: "Invalid/Malformed auth token",
 			}
 
-			fmt.Println(err)
+
 			JSON(w, http.StatusForbidden, response)
 			return
 		}
