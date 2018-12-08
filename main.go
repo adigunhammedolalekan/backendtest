@@ -17,6 +17,7 @@ import (
 
 func main() {
 
+	//Load environment variables and connect to DB
 	godotenv.Load()
 	db, err := app.CreateDbConnection(os.Getenv("DB_URL"))
 	if err != nil {
