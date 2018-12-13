@@ -91,7 +91,7 @@ func (repo *AccountRepository) ValidateLoginCredentials(email, password string) 
 
 //UpdateAccount updates existing account
 func (repo *AccountRepository) UpdateAccount(account uint, profile *models.Profile) error {
-	return repo.db.Table("profiles").Update(profile).Error
+	return repo.db.Table("profiles").Where("account_id = ?", account).Update(profile).Error
 }
 
 //GetAccount fetch account with @param email from the database
