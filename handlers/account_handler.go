@@ -214,6 +214,14 @@ func (handler *AccountHandler) HandleForgotPassword(w http.ResponseWriter, r *ht
 	}
 
 	email := r.Form.Get("email")
+	if email == "" {
+		handler.template.Lookup("forgot_password.html").Execute(w,
+			&Response{
+				Error: true, Message: "Enter a valid email address",
+			})
+		return
+	}
+
 	account := handler.repo.GetAccount(email)
 	if account == nil {
 		handler.template.Lookup("forgot_password.html").Execute(w,
