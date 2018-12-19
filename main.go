@@ -19,7 +19,7 @@ func main() {
 
 	//Load environment variables and connect to DB
 	godotenv.Load()
-	db, err := app.CreateDbConnection(os.Getenv("DB_URL"))
+	db, err := app.CreateDbConnection(os.Getenv("DATABASE_URL"))
 	if err != nil {
 		log.Fatal("Failed to connect to DB => ", err)
 	}
