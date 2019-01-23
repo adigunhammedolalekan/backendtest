@@ -67,8 +67,9 @@ func main() {
 		ReadTimeout:  15 * time.Second,
 	}
 
-	if err := srv.ListenAndServe(); err == nil {
-		log.Println("Server started at " + address)
+	log.Println("Server started at " + address)
+	if err := srv.ListenAndServe(); err != nil {
+		log.Fatal("Failed to start server ", err)
 	}
 }
 

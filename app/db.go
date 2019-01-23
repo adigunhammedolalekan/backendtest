@@ -3,14 +3,14 @@ package app
 import (
 	"github.com/adigunhammedolalekan/backendTest/models"
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/go-sql-driver/mysql"
 	"net/http"
 )
 
 //CreateDbConnection connects to MySQL database and returns connection pointer
 func CreateDbConnection(url string) (*gorm.DB, error) {
 
-	db, err := gorm.Open("postgres", url)
+	db, err := gorm.Open("mysql", url)
 	if err != nil {
 		return nil, err
 	}

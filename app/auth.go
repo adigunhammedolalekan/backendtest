@@ -3,7 +3,6 @@ package app
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"github.com/adigunhammedolalekan/backendTest/models"
 	"github.com/dgrijalva/jwt-go"
 	"net/http"
@@ -75,7 +74,6 @@ var JwtMiddleware = func(next http.Handler) http.Handler {
 				Error: true, Message: "Invalid/Malformed auth token",
 			}
 
-			fmt.Println(err)
 			JSON(w, http.StatusForbidden, response)
 			return
 		}
